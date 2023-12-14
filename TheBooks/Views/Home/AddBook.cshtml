@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "AddBook";
+}
+
+<h1>Add Book</h1>
+<div class="border shadow rounded p-3">
+    <form id="addForm">
+        <label for="bookName" class="form-label">Book Name</label>
+        <input class="form-control" id="bookName" name="bookName" required>
+        <label for="author" class="form-label">Author</label>
+        <input class="form-control" id="author" name="author" required>
+        <label for="year" class="form-label">Publication Year</label>
+        <input type="number" class="form-control" id="year" name="year" required>
+        <button type="submit" class="btn btn-success">Add</button>
+    </form>
+    <button id="backBtn" class="btn btn-danger">Back</button>
+</div>
+
+@section Scripts {
+    <script>
+        $("#addForm").on("submit", (event) => {
+            event.preventDefault();
+
+            if ($("#year").val() > new Date().getFullYear() || $("#year").val() <= 1455) {
+                alert("Year is invalid");
+                return;
+            }
+
+            const formData = {
+                bname: $("#bookName").val(),
+                author: $("#author").val(),
+                year: $("#year").val()
+            };
+
+            if (confirm("Add this book?")) {
+                $.ajax({
+                    method: "POST",
+                    url: "http://www.thebooksapi.com/addbook.php",
+                    data: formData,
+                    success: () => {
+                        alert("Book added successfully");
+                        window.location.href = "/Home/Books";
+                    },
+                    error: () => {
+                        alert("Failed adding book");
+                    }
+                });
+            }
+        });
+
+        $("#backBtn").on("click", () => window.location.href = "/Home/Books");
+    </script>
+}

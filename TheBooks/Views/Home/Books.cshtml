@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Books";
+
+}
+
+<div>
+    <h1>Book list</h1>
+    <div class="container mt-4">
+        
+        <button id="addBook" class="btn btn-primary ms-2">Add book</button>
+        
+        <div id="cardContainer" class="row row-cols my-3"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(() => {
+            $.ajax({
+                method: "GET",
+                url: "http://www.thebooksapi.com/books.php",
+                success: (res) => {
+                    const data = JSON.parse(res);
+                    const cardContainer = $('#cardContainer');
+
+                    data.forEach((book) => {
+                        let cardDiv = $('<div class="col d-flex justify-content-center">' +
+                            '<div class="card mb-4" style="width: 18rem;">' +
+                            '<div class="card-body">' +
+                            '<h5 class="card-title">' + book.bname + '</h5>' +
+                            '<h6 class="card-subtitle mb-2 text-muted"> By: ' + book.author + '</h6>' +
+                            '<p class="card-text">This book was published in the year of ' + book.year + '</p>' +
+                            '<a href="#" class="card-link">Card link</a>' +
+                            '<a href="#" class="card-link">Another link</a>' +
+                            '</div></div></div>');
+
+                        cardContainer.append(cardDiv);
+                    });
+                },
+                error: () => {
+                    console.log("error fetching data");
+                }
+            });
+        });
+
+        $("#addBook").on("click", () => window.location.href = "/Home/AddBook");
+    </script>
+}
+
+

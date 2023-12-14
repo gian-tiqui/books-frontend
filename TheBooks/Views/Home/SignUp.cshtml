@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "SignUp";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <h2>Sign Up</h2>
+                <form id="signupForm">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#signupForm").submit(function (event) {
+                event.preventDefault();
+
+                var formData = {
+                    email: $("#email").val(),
+                    password: $("#password").val(),
+                    username: $("#username").val()
+                };
+
+                if (confirm("Sign up with the data?")) {
+                    $.ajax({
+                        method: "POST",
+                        url: "http://www.thebooksapi.com/register.php",
+                        data: formData,
+                        success: function (res) {
+                            alert("Sign up successful");
+                            window.location.href = "/";
+                        },
+                        error: function () {
+                            alert("There was an error in signing you up.");
+                        }
+                    });
+                }
+
+            });
+        });
+    </script>
+}
