@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <h2>Sign in</h2>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $("#loginForm").on("submit", (event) => {
+            event.preventDefault();
+
+            const formData = {
+                email: $("#email").val(),
+                password: $("#password").val()
+            };
+
+            $.ajax({
+                method: "POST",
+                url: "http://www.thebooksapi.com/auth.php",
+                data: formData,
+                success: (res) => {
+                    if (res.length === 0) {  
+                        alert("User not found or incorrect password");
+                        return;
+                    } else {
+                        alert("Login Successful");
+                        const user = res[0]; 
+
+                        localStorage.setItem("user", JSON.stringify(user));
+
+                        window.location.href = "/Home/Index";
+                    }
+                }
+            });
+        });
+
+    </script>
+}

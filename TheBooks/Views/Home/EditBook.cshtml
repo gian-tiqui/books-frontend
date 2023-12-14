@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<h1>Edit Book</h1>
+<div class="border shadow rounded p-3">
+    <form id="editForm">
+        <label for="bookName2" class="form-label">Book Name</label>
+        <input class="form-control" id="bookName2" name="bookName" required>
+        <label for="author2" class="form-label">Author</label>
+        <input class="form-control" id="author2" name="author" required>
+        <label for="year2" class="form-label">Publication Year</label>
+        <input type="number" class="form-control" id="year2" name="year" required>
+        <button type="submit" class="btn btn-success">Edit</button>
+    </form>
+    <button id="backBtn" class="btn btn-danger">Back</button>
+</div>
+
+@section Scripts {
+    <script>
+        const book = JSON.parse(localStorage.getItem("book"));
+
+        if (book == null) {
+            alert("No book data found");
+        } else {
+            $("#bookName2").val(book.name);
+            $("#author2").val(book.au);
+            $("#year2").val(book.yr);
+        }
+
+        
+
+        $("#editForm").on("submit", (event) => {
+            event.preventDefault();
+
+            const bData = {
+                bname: $("#bookName2").val(),
+                year: $("#year2").val(),
+                author: $("#author2").val(),
+                bid: book.bid,
+            };
+
+            if (!confirm("Edit this book?")) return;
+
+            console.log(bData);
+
+            $.ajax({
+                method: "POST",
+                url: "http://www.thebooksapi.com/editbook.php",
+                data: bData,
+                success: (res) => {
+                    if (res === "success") {
+                        alert("Book edited successfully");
+                        window.location.href = "/Home/Books";
+                    } else {
+                        alert(res);
+                    }
+                },
+                error: (error) => {
+                    console.log(error);
+                },
+                complete: () => {
+                    
+                }
+            });
+        });
+    </script>
+}

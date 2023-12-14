@@ -1,4 +1,17 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
 
-// Write your JavaScript code.
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user) {
+    $("#booksLink").hide();
+    $("#logout").hide();
+
+    $("#signUpLink").show();
+} else {
+    $("#booksLink").show();
+    $("#logout").show();
+
+    $("#signUpLink").hide();
+}
+
+$("#logout").on("click", () => localStorage.clear());

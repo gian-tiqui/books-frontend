@@ -1,16 +1,12 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Books";
-
 }
 
 <div>
     <h1>Book list</h1>
     <div class="container mt-4">
-        
         <button id="addBook" class="btn btn-primary ms-2">Add book</button>
-        
-        <div id="cardContainer" class="row row-cols my-3"></div>
+        <div id="cardContainer" class="row row-cols my-3 d-flex justify-content-start"></div>
     </div>
 </div>
 
@@ -25,14 +21,14 @@
                     const cardContainer = $('#cardContainer');
 
                     data.forEach((book) => {
-                        let cardDiv = $('<div class="col d-flex justify-content-center">' +
-                            '<div class="card mb-4" style="width: 18rem;">' +
+                        let cardDiv = $('<div class="col col-auto d-flex justify-content-start">' +
+                            '<div class="card mb-4 shadow" style="width: 18rem;">' +
                             '<div class="card-body">' +
                             '<h5 class="card-title">' + book.bname + '</h5>' +
-                            '<h6 class="card-subtitle mb-2 text-muted"> By: ' + book.author + '</h6>' +
+                            '<h6 class="card-subtitle mb-2 text-muted">Published by: ' + book.author + '</h6>' +
                             '<p class="card-text">This book was published in the year of ' + book.year + '</p>' +
-                            '<a href="#" class="card-link">Card link</a>' +
-                            '<a href="#" class="card-link">Another link</a>' +
+                            '<a href="#" class="btn btn-primary" onclick="editBook(' + book.bid + ', \'' + book.bname + '\', \'' + book.author + '\', \'' + book.year + '\')">Edit</a>' +
+                            '<a href="#" class="btn btn-danger ms-2" onclick="deleteBook(' + book.bid + ')">Delete</a>' +
                             '</div></div></div>');
 
                         cardContainer.append(cardDiv);
@@ -45,7 +41,45 @@
         });
 
         $("#addBook").on("click", () => window.location.href = "/Home/AddBook");
+
+        function editBook(bookId, bname, author, year) {
+            const bookData = { 
+                bid: bookId, 
+                name: bname, 
+                au: author,
+                yr: year
+            };
+
+            const sBookData = JSON.stringify(bookData);
+
+            localStorage.setItem("book", sBookData);
+
+            window.location.href = "/Home/EditBook";
+        }
+
+        function deleteBook(bookId) {
+
+            if (!confirm("Are you sure you want to delete this book?")) return;
+
+            $.ajax({
+                method: "POST",
+                url: "http://www.thebooksapi.com/deletebook.php",
+                data: { bid: bookId },
+                success: (res) => {
+                    if (res !== "failed") {
+                        alert("Book deleted successfully");
+                    } else {
+                        alert("There was a problem in deleting the book");
+                    }
+                },
+                error: () => {
+                    alert("There was a problem in deleting the book");
+                },
+                complete: () => {
+                    window.location.href = "/Home/Books";
+                }
+            });
+        }
+
     </script>
 }
-
-

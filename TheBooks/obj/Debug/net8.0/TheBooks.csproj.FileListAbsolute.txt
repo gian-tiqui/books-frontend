@@ -28,3 +28,4 @@ C:\Users\MyPC\projects\aspnet\TheBooks\TheBooks\obj\Debug\net8.0\refint\TheBooks
 C:\Users\MyPC\projects\aspnet\TheBooks\TheBooks\obj\Debug\net8.0\TheBooks.pdb
 C:\Users\MyPC\projects\aspnet\TheBooks\TheBooks\obj\Debug\net8.0\TheBooks.genruntimeconfig.cache
 C:\Users\MyPC\projects\aspnet\TheBooks\TheBooks\obj\Debug\net8.0\ref\TheBooks.dll
+C:\Users\MyPC\projects\aspnet\TheBooks\TheBooks\obj\Debug\net8.0\TheBooks.sourcelink.json
