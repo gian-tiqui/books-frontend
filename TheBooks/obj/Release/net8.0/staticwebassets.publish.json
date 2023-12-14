@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HFqh2TqMD7IC2XZzYku0v0ZzZJodMm68dmKKFfeRla8=",
+  "Hash": "A7WIGu0YRmGZ3UNUFuQGepvtlY1JKVkuPs9WBFJtcNQ=",
   "Source": "TheBooks",
   "BasePath": "_content/TheBooks",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\MyPC\\projects\\aspnet\\TheBooks\\TheBooks\\wwwroot\\Images\\indexpicture.png",
+      "SourceId": "TheBooks",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MyPC\\projects\\aspnet\\TheBooks\\TheBooks\\wwwroot\\",
+      "BasePath": "_content/TheBooks",
+      "RelativePath": "Images/indexpicture.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\indexpicture.png"
     },
     {
       "Identity": "C:\\Users\\MyPC\\projects\\aspnet\\TheBooks\\TheBooks\\wwwroot\\Images\\thebooklogo.png",

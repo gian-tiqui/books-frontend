@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\TheBooks.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\MyPC\\projects\\aspnet\\TheBooks\\TheBooks\\wwwroot\\Images\\indexpicture.png",
+      "PackagePath": "staticwebassets\\Images\\indexpicture.png"
+    },
+    {
       "Id": "C:\\Users\\MyPC\\projects\\aspnet\\TheBooks\\TheBooks\\wwwroot\\Images\\thebooklogo.png",
       "PackagePath": "staticwebassets\\Images\\thebooklogo.png"
     },

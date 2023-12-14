@@ -2,6 +2,33 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div>
+<div class="container">
+    <div class="row d-flex align-items-center justify-content-center mt-5">
+        <div class="col-md-3 d-flex align-items-center justify-content-center">
+            <div class="text-center">
+                <h1 class="fw-bold">The Book</h1>
+                <p class="mt-2 mx-auto">
+                    Welcome to "The Book," your go-to destination for a straightforward and efficient exploration of literary wonders!
+                    With a simple and user-friendly interface, our website offers a curated list of books, neatly organized by title, year, and author.
+                    No frills, no distractions—just the essentials for book enthusiasts.
+                </p>
+                <button id="gLogin2" class="btn btn-sm rounded-pill bg-primary fw-bold text-light px-5">Login</button>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="ms-md-4">
+                <img src="~/Images/indexpicture.png" alt="Index pic" class="img-fluid" style="max-width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
 </div>
 
+@section Scripts {
+    <script>
+        if (user) {
+            $("#gLogin2").hide();
+        }
+
+        $("#gLogin2").on("click", () => window.location.href = "/Home/Login");
+    </script>
+}
