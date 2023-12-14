@@ -3,7 +3,7 @@
 }
 
 <div>
-    <h1>Book list</h1>
+    <h1>Books Manager</h1>
     <div class="container mt-4">
         <button id="addBook" class="btn btn-primary ms-2">Add book</button>
         <div id="cardContainer" class="row row-cols my-3 d-flex justify-content-start"></div>
@@ -30,7 +30,6 @@
                             '<a href="#" class="btn btn-primary" onclick="editBook(' + book.bid + ', \'' + book.bname + '\', \'' + book.author + '\', \'' + book.year + '\')">Edit</a>' +
                             '<a href="#" class="btn btn-danger ms-2" onclick="deleteBook(' + book.bid + ')">Delete</a>' +
                             '</div></div></div>');
-
                         cardContainer.append(cardDiv);
                     });
                 },

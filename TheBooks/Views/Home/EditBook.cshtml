@@ -3,19 +3,32 @@
     ViewData["Title"] = "Edit Book";
 }
 
-<h1>Edit Book</h1>
-<div class="border shadow rounded p-3">
-    <form id="editForm">
-        <label for="bookName2" class="form-label">Book Name</label>
-        <input class="form-control" id="bookName2" name="bookName" required>
-        <label for="author2" class="form-label">Author</label>
-        <input class="form-control" id="author2" name="author" required>
-        <label for="year2" class="form-label">Publication Year</label>
-        <input type="number" class="form-control" id="year2" name="year" required>
-        <button type="submit" class="btn btn-success">Edit</button>
-    </form>
-    <button id="backBtn" class="btn btn-danger">Back</button>
+<div class="container">
+    <div class="row justify-content-center mt-xxl-6">
+        <div class="col-md-4 mt-5">
+            <div class="border rounded shadow">
+                <div class="text-center">
+                    <h2 class="mb-3 mt-3">Edit Book</h2>
+                    <form id="editForm" class="p-3">
+                        <input class="form-control form-control-sm mb-2" id="bookName2" name="bookName" placeholder="Name of book" required>
+                        <input class="form-control form-control-sm mb-2" id="author2" name="author" placeholder="Book Author" required>
+                        <input type="number" class="form-control form-control-sm mb-2" id="year2" name="year" placeholder="Year of publication" required>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-sm fw-bold btn-success btn-block mb-1 col-12">Edit</button>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <hr class="my-3" style="width: 40%; background-color: #000000;" />
+                                <div class="mx-2">or</div>
+                                <hr class="my-3" style="width: 40%; background-color: #000000;" />
+                            </div>
+                            <button type="button" id="backBtn" class="btn btn-sm fw-bold btn-danger btn-block col-12">Back</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 @section Scripts {
     <script>
@@ -65,5 +78,7 @@
                 }
             });
         });
+
+        $("#backBtn").on("click", () => window.location.href = "/Home/Books");
     </script>
 }

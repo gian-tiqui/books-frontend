@@ -1,6 +1,4 @@
-﻿
-
-const user = JSON.parse(localStorage.getItem("user"));
+﻿const user = JSON.parse(localStorage.getItem("user"));
 
 if (!user) {
     $("#booksLink").hide();
@@ -14,4 +12,8 @@ if (!user) {
     $("#signUpLink").hide();
 }
 
-$("#logout").on("click", () => localStorage.clear());
+$("#logout").on("click", () => {
+    if (confirm("Do you want to logout?")) {
+        localStorage.clear();
+    }
+});

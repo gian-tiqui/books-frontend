@@ -2,18 +2,30 @@
     ViewData["Title"] = "AddBook";
 }
 
-<h1>Add Book</h1>
-<div class="border shadow rounded p-3">
-    <form id="addForm">
-        <label for="bookName" class="form-label">Book Name</label>
-        <input class="form-control" id="bookName" name="bookName" required>
-        <label for="author" class="form-label">Author</label>
-        <input class="form-control" id="author" name="author" required>
-        <label for="year" class="form-label">Publication Year</label>
-        <input type="number" class="form-control" id="year" name="year" required>
-        <button type="submit" class="btn btn-success">Add</button>
-    </form>
-    <button id="backBtn" class="btn btn-danger">Back</button>
+<div class="container">
+    <div class="row justify-content-center mt-xxl-6">
+        <div class="col-md-4 mt-5">
+            <div class="border rounded shadow">
+                <div class="text-center">
+                    <h2 class="mb-3 mt-3">Add Book</h2>
+                    <form id="addForm" class="p-3">
+                        <input class="form-control form-control-sm mb-2" id="bookName" name="bookName" placeholder="Name of book" required>
+                        <input class="form-control form-control-sm mb-2" id="author" name="author" placeholder="Book Author" required>
+                        <input type="number" class="form-control form-control-sm mb-2" id="year" name="year" placeholder="Year of publication" required>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-sm fw-bold btn-success btn-block mb-1 col-12">Add</button>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <hr class="my-3" style="width: 40%; background-color: #000000;" />
+                                <div class="mx-2">or</div>
+                                <hr class="my-3" style="width: 40%; background-color: #000000;" />
+                            </div>
+                            <button type="button"id="backBtn" class="btn btn-sm fw-bold btn-danger btn-block col-12">Go back</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {

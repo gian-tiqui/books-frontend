@@ -3,36 +3,41 @@
 }
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="text-center">
-                <h2>Sign Up</h2>
-                <form id="signupForm">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                    <button id="gLogin" type="button" class="btn btn-primary">Sign In</button>
+    <div class="row justify-content-center mt-xxl-6">
+        <div class="col-md-4 mt-5">
+            <div class="border rounded shadow">
+                <div class="text-center">
+                    <h2 class="mb-3 mt-3">Sign up</h2>
+                    <form id="signupForm" class="p-3">
+                        <div class="mb-2">
+                            <input class="form-control form-control-sm" id="username" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="mb-2">
+                            <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="mb-2">
+                            <input type="password" class="form-control form-control-sm" id="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="mb-2">
+                            <input type="password" class="form-control form-control-sm" id="confirmPassword" name="password" placeholder="Password" required>
+                        </div>
 
-                </form>
-                    
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-sm fw-bold bg-primary text-light btn-block mb-1 col-12">Sign up</button>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <hr class="my-3" style="width: 40%; background-color: #000000;" />
+                                <div class="mx-2">or</div>
+                                <hr class="my-3" style="width: 40%; background-color: #000000;" />
+                            </div>
+                            <button type="button" class="btn btn-sm fw-bold btn-success btn-block col-12" id="gLogin">Sign in</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 @section Scripts {
     <script>
@@ -41,7 +46,7 @@
                 event.preventDefault();
 
                 if ($("#confirmPassword").val() !== $("#password").val()) {
-                    alert("Passwords does not match.");
+                    alert("Passwords do not match.");
                     return;
                 }
 
@@ -65,10 +70,9 @@
                         }
                     });
                 }
-
             });
-        });
 
-        $("#gLogin").on("click", () => window.location.href = "/Home/Login");
+            $("#gLogin").on("click", () => window.location.href = "/Home/Login");
+        });
     </script>
 }
