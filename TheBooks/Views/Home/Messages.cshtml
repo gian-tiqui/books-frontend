@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Messages";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="text-center">
+                <h1>Messages</h1>
+            </div>
+            <div class="p-3 mt-3" id="messagesContainer">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://www.thebooksapi.com/messages.php",
+                method: "GET",
+                dataType: "json",
+                success: (data) => {
+                    data.map((message) => {
+                        var messageContainer = $('<div>').addClass('message-container mb-3 px-3 py-2 border');
+                        var messageHeader = $('<div>').addClass('message-header');
+                        var messageAuthor = $('<span>').addClass('message-author fw-bold').text(message.name);
+                        var messageDate = $('<span>').addClass('message-date ps-2').text(message.created_at);
+                        var messageContent = $('<div>').addClass('message-content').html('<p>' + message.message + '</p>');
+
+                        messageHeader.append(messageAuthor, messageDate);
+                        messageContainer.append(messageHeader, messageContent);
+
+                        $('#messagesContainer').append(messageContainer);
+                    });
+                },
+                error: () => {
+                    console.error("Failed to fetch messages.");
+                }
+            });
+        });
+    </script>
+}

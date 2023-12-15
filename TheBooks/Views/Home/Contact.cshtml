@@ -1,6 +1,63 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Contact";
 }
 
-<h1>Contact</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <h1>Contact The Books</h1>
+            </div>
+            <div class="border rounded shadow p-3 mt-3">
+                <p>Feel free to get in touch with us! Whether you have a question, suggestion, or just want to say hello, we'd love to hear from you.</p>
+
+                <form id="contactForm" class="p-3">
+                    <div class="mb-2">
+                        <input class="form-control form-control-sm" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="email" class="form-control form-control-sm" id="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="mb-2">
+                        <textarea class="form-control form-control-sm" id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-sm fw-bold bg-primary text-light btn-block mb-1 col-12">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#contactForm").submit(function (event) {
+                event.preventDefault();
+
+                var formData = {
+                    name: $("#name").val(),
+                    email: $("#email").val(),
+                    message: $("#message").val()
+                };
+
+                if (confirm("Send the message?")) {
+                    $.ajax({
+                        method: "POST",
+                        url: "http://www.thebooksapi.com/sendmessage.php",
+                        data: formData,
+                        success: () => {
+                            alert("Message sent successfully");
+                        },
+
+                        error: () => {
+                            alert("There was an error in sending your message.");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
