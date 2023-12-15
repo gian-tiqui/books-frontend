@@ -21,10 +21,41 @@
             </div>
         </div>
     </div>
+    <div class="row d-flex align-items-center justify-content-center mt-5">
+        <div class="container mt-4">
+            <div id="cardContainer" class="row row-cols my-3 d-flex justify-content-start"></div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
     <script>
+        $(document).ready(() => {
+            $.ajax({
+                method: "GET",
+                url: "http://www.thebooksapi.com/books.php",
+                success: (res) => {
+                    const data = JSON.parse(res);
+                    const cardContainer = $('#cardContainer');
+
+                    data.forEach((book) => {
+                        let cardDiv = $('<div class="col col-auto d-flex justify-content-start">' +
+                            '<div class="card mb-4 shadow" style="width: 18rem;">' +
+                            '<div class="card-body">' +
+                            '<h5 class="card-title">' + book.bname + '</h5>' +
+                            '<h6 class="card-subtitle mb-2 text-muted">Published by: ' + book.author + '</h6>' +
+                            '<p class="card-text">This book was published in the year of ' + book.year + '</p>' +
+                            '</div></div></div>');
+
+                        cardContainer.append(cardDiv);
+                    });
+                },
+                error: () => {
+                    console.log("error fetching data");
+                }
+            });
+        });
+        
         if (user) {
             $("#gLogin2").hide();
         }
